@@ -10,9 +10,11 @@ p_load(lubridate)
 p_load(here)
 p_load(readxl)
 p_load(glue)
+p_load(googledrive)
+p_load(googlesheets4)
 
 
 # Get latex ---------------------------------------------------------------
 
 ## This needs to be run manually if LaTex is not installed locally.
-##tinytex::install_tinytex()
+# tinytex::install_tinytex()
