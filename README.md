@@ -2,7 +2,7 @@
 
 Forked from [seabbs/cv](https://github.com/seabbs/cv)
 
-([![Travis-CI Build Status](https://travis-ci.org/seabbs/cv.svg?branch=master)](https://travis-ci.org/seabbs/cv))
+[![Travis-CI Build Status](https://travis-ci.com/mikecuoco/cv.svg?branch=master)](https://travis-ci.com/github/mikecuoco/cv)
 
 Academic CV built using R - updated automatically from [Google Scholar](https://scholar.google.com/citations?user=GqZm90IAAAAJ&hl=en) each week. See below for repository structure, tool links and to dos. Please feel free to fork this repository for your own use but please let me know of any improvements that you make (so I can steal them).
 
