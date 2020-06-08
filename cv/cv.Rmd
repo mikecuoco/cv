@@ -7,10 +7,12 @@ www:
 email: mcuoco@broadinstitute.org
 twitter: cuoco_michael
 github: mikecuoco
+orcid: "0000-0003-2163-5120"
 aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
 date: "`r format(Sys.time(), '%B %Y')`"
-headcolor: "000000"
-output: vitae::awesomecv
+headcolor: "00008B"
+output: 
+  vitae::hyndman: default
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +20,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 source("../scripts/install.R")
+source("../scripts/pubfetch.R")
 ```
 
 ```{r get data, include=FALSE}
@@ -39,6 +42,14 @@ pubs <- scholar::get_publications("8aKD8FoAAAAJ") %>%
                 preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
                                          TRUE ~ FALSE)) %>% 
   dplyr::arrange(desc(year))
+
+# Publications - get from Pubmed
+dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
+pres = get_biorxiv(dois) %>% filter(pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
+pubs = get_pubmed("Michael S. Cuoco[Author]") %>% arrange(desc(pubdate)) 
+pubs = bind_rows(pubs, pres) %>% 
+  mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
+         preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE)) 
 
 ## Jobs
 honors <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "honors") %>%
@@ -70,7 +81,8 @@ service <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "s
 # Education 
 ```{r}
 detailed_entries(edu, 
-                 when = glue("{start_date}--{end_date}"),
+                 when = glue("{month(start_date,T)} {year(start_date)}--
+                              {month(end_date,T)} {year(end_date)}"),   
                  what = degree,
                  where = loc,
                  with = uni,
@@ -95,22 +107,22 @@ honors %>%
 jobs %>% 
   detailed_entries(
     what = role,
-    when = glue("{start_date}--{end_date}"),
-    with = glue("{group} | {institution} | {uni}"),
+    when = glue("{month(start_date, T)} {year(start_date)}--
+                {month(end_date, T)} {year(end_date)}"),
+    with = glue("{group}, {institution}, {uni}"),
     where = where,
     why = details)
 ```
 
 \pagebreak
 
-
-
-# Training
+# Professional Training
 
 ```{r}
 training %>% 
   detailed_entries(what = what, with = with, when = when, where = where, why = why)
 ```
+
 # Teaching
 
 ```{r}
@@ -120,30 +132,16 @@ teaching %>%
 
 # Publications
 
-<!-- **First author** -->
-
-<!-- ```{r} -->
-<!-- pubs %>%  -->
-<!--   dplyr::filter(first_author, !preprint) %>%  -->
-<!--   detailed_entries( -->
-<!--     what = title, -->
-<!--     when = year, -->
-<!--     with = author, -->
-<!--     where = journal,  -->
-<!--     .protect = TRUE -->
-<!--   ) -->
-<!-- ``` -->
-
-**Non-first author**
+**Journal Articles**
 
 ```{r}
 pubs %>% 
-  dplyr::filter(!first_author, !preprint) %>% 
+  dplyr::filter(!preprint) %>% 
   detailed_entries(
     what = title,
-    when = year,
-    with = author,
-    where = journal,
+    when = pubdate,
+    with = authors,
+    where = glue("{journal} -- doi.org/{doi}"), 
     .protect = TRUE
   )
 ```
@@ -155,30 +153,42 @@ pubs %>%
   dplyr::filter(preprint) %>% 
   detailed_entries(
     what = title,
-    when = year,
-    with = author,
-    where = journal, 
+    when = pubdate,
+    with = authors,
+    where = glue("{journal} -- doi.org/{doi}"), 
     .protect = TRUE
   )
 ```
 
-*Updated programmatically each week. See [here](https://scholar.google.com/citations?user=8aKD8FoAAAAJ=en) for DOIs and citation details.*
-
-\pagebreak
+*Publications are updated programmatically each week.*
 
 # Presentations
 
+**Talks**
+
 ```{r}
 presentations %>% 
+  dplyr::filter(type == "talk") %>%
   detailed_entries(what = what,
-                   when = when,
-                   with = with,
-                   where = where,
-                   why = why,
+                   when = glue("{month(when,T)} {year(when)}"),
+                   # with = with,
+                   where = glue("{with}; {where}"),
                    .protect = TRUE)
 ```
 
-# Service
+**Posters**
+
+```{r posters}
+presentations %>% 
+  dplyr::filter(type == "poster") %>%
+  detailed_entries(what = what,
+                   when = glue("{month(when,T)} {year(when)}"),
+                   # with = with,
+                   where = glue("{with}; {where}"),
+                   .protect = TRUE)
+```
+
+# Service   
 
 ```{r}
 service %>% 
