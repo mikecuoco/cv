@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 source("../scripts/install.R")
 source("../scripts/pubfetch.R")
+gs4_deauth()
 ```
 
 ```{r get data, include=FALSE}
@@ -79,7 +80,7 @@ service <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "s
 ```
 
 # Education 
-```{r}
+```{r education}
 detailed_entries(edu, 
                  when = glue("{month(start_date,T)} {year(start_date)}--
                               {month(end_date,T)} {year(end_date)}"),   
@@ -118,14 +119,14 @@ jobs %>%
 
 # Professional Training
 
-```{r}
+```{r training}
 training %>% 
   detailed_entries(what = what, with = with, when = when, where = where, why = why)
 ```
 
 # Teaching
 
-```{r}
+```{r teaching}
 teaching %>% 
   detailed_entries(what = what, when = when, with = with, where = where, why = why)
 ```
@@ -134,7 +135,7 @@ teaching %>%
 
 **Journal Articles**
 
-```{r}
+```{r pubs}
 pubs %>% 
   dplyr::filter(!preprint) %>% 
   detailed_entries(
@@ -148,7 +149,7 @@ pubs %>%
 
 **Preprints**
 
-```{r}
+```{r preprints}
 pubs %>% 
   dplyr::filter(preprint) %>% 
   detailed_entries(
@@ -166,7 +167,7 @@ pubs %>%
 
 **Talks**
 
-```{r}
+```{r talks}
 presentations %>% 
   dplyr::filter(type == "talk") %>%
   detailed_entries(what = what,
@@ -190,7 +191,7 @@ presentations %>%
 
 # Service   
 
-```{r}
+```{r service}
 service %>% 
   detailed_entries(what = what,
                    when = when,
@@ -201,7 +202,7 @@ service %>%
 
 # Skills
 
-```{r}
+```{r skills}
 skills %>% 
   detailed_entries(what = skill, with = category)
 ```
