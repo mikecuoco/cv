@@ -20,9 +20,9 @@ Academic CV built using R - updated automatically from [Google Scholar](https://
 - The [`{vitae}`](https://docs.ropensci.org/vitae/) :package: is used to provide a CV template.
 - [`{tidyverse}`](https://www.tidyverse.org) :tool: are used for data read in and manipulation.
 - [`{here}`](https://here.r-lib.org) :package: for path management.
-- [`{rentrez}`](https://github.com/ropensci/rentrez) :package: is used to pull papers from PubMed using Entrez.
-- [`{rbiorxiv}`](https://github.com/nicholasmfraser/rbiorxiv) :package: is used to pull papers from BioRxiv.
-- [`{googlesheets4}`](https://github.com/tidyverse/googlesheets4) :package: is used to pull CV data from a googlesheet (must be public)
+- [`{rentrez}`](https://github.com/ropensci/rentrez) :package: to pull papers from PubMed using Entrez.
+- [`{rbiorxiv}`](https://github.com/nicholasmfraser/rbiorxiv) :package: to pull papers from BioRxiv.
+- [`{googlesheets4}`](https://github.com/tidyverse/googlesheets4) :package: to pull CV data from a googlesheet (must be public)
 - [`{tinytex}`](https://github.com/yihui/tinytex) :package: to manage LaTex installation and additional packages.
 - [`{tic}`](https://github.com/ropenscilabs/tic.website) :package: to manage CV building and deployment on [Travis CI](https://travis-ci.org).
 - [Travis CI](https://travis-ci.org) is used for building the CV each week.

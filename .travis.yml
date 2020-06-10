@@ -41,3 +41,11 @@ env:
 
 #services
 services:
+
+# notifications
+notifications:
+  email:
+    recipients:
+      - mcuoco12@gmail.com
+    on_success: always
+    on_failure: always
