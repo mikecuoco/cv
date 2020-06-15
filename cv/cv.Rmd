@@ -1,10 +1,10 @@
 ---
 name: Michael Sellers Cuoco
-position: "Research Associate"
-address: "Aviv Regev Laboratory - Broad Institute"
+position: "Bioinformatics and Systems Biology  PhD Student"
+address: "University of California, San Diego"
 phone: "(978) 505-0993" 
 www: 
-email: mcuoco@broadinstitute.org
+email: mcuoco@ucsd.edu
 twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
