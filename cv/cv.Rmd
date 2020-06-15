@@ -24,76 +24,22 @@ source("../scripts/pubfetch.R")
 gs4_deauth()
 ```
 
-```{r get data, include=FALSE}
-## Education
-edu <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "edu")
-
-## Jobs
-jobs <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs")
-
-## Publications - change google id here
-pubs <- scholar::get_publications("8aKD8FoAAAAJ") %>% 
-  dplyr::mutate(author = author %>% 
-                  as.character %>% 
-                  stringr::str_trim(),
-                journal = journal %>% 
-                  replace(journal %in% "bioRxiv", "BioRxiv"), 
-                first_author = case_when(stringr::str_starts(author, "S Abbott") ~ TRUE,
-                                         TRUE ~ FALSE),
-                preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,
-                                         TRUE ~ FALSE)) %>% 
-  dplyr::arrange(desc(year))
-
-# Publications - get from Pubmed
-dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
-pres = get_biorxiv(dois) %>% filter(pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
-pubs = get_pubmed("Michael S. Cuoco[Author]") %>% arrange(desc(pubdate)) 
-pubs = bind_rows(pubs, pres) %>% 
-  mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
-         preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE)) 
-
-## Jobs
-honors <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "honors") %>%
-  arrange(desc(when))
-
-## Teaching
-teaching <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
-  arrange(desc(when))
-
-## Presentations
-presentations <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "pres") %>% 
-  arrange(desc(when))
-
-## Training
-training = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>% 
-  arrange(desc(when))
-
-## Skills
-skills = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "skills") %>% 
-  group_by(category) %>% 
-  mutate(skill = paste(skill, collapse = ", ")) %>% 
-  ungroup %>% 
-  unique
-
-## Service
-service <- read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "service")
-```
-
 # Education 
 ```{r education}
-detailed_entries(edu, 
-                 when = glue("{month(start_date,T)} {year(start_date)}--
-                              {month(end_date,T)} {year(end_date)}"),   
-                 what = degree,
-                 where = loc,
-                 with = uni,
-                 why = details)
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "edu") %>%
+  detailed_entries(when = glue("{month(start_date,T)} {year(start_date)}--
+                                {month(end_date,T)} {year(end_date)}"),   
+                   what = degree,
+                   where = loc,
+                   with = uni,
+                   why = details)
 
 ```
 # Honors and Awards
 
 ```{r honors}
-honors %>% 
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "honors") %>%
+  arrange(desc(when)) %>% 
   detailed_entries(
     what = what,
     when = when,
@@ -105,7 +51,7 @@ honors %>%
 # Experience
 
 ```{r research}
-jobs %>% 
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>% 
   detailed_entries(
     what = role,
     when = glue("{month(start_date, T)} {year(start_date)}--
@@ -120,32 +66,47 @@ jobs %>%
 # Professional Training
 
 ```{r training}
-training %>% 
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>% 
+  arrange(desc(when)) %>% 
   detailed_entries(what = what, with = with, when = when, where = where, why = why)
 ```
 
 # Teaching
 
 ```{r teaching}
-teaching %>% 
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
+  arrange(desc(when)) %>% 
   detailed_entries(what = what, when = when, with = with, where = where, why = why)
 ```
 
 # Publications
 
-**Journal Articles**
+```{r get publication data}
+# Publications - get from Pubmed
+dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
+biorxiv = get_biorxiv(dois) %>% filter(pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
+pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate)) 
+pubs = bind_rows(pubmed, biorxiv) %>% 
+  mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
+         preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE),
+         authors = str_replace(authors,"MS Cuoco","\\\\underline{\\\\textbf{MS Cuoco}}"))
+```
 
-```{r pubs}
-pubs %>% 
-  dplyr::filter(!preprint) %>% 
+**Published**
+
+```{r published}
+pubs %>%
+  dplyr::filter(!preprint) %>%
   detailed_entries(
     what = title,
     when = pubdate,
-    with = authors,
-    where = glue("{journal} -- doi.org/{doi}"), 
-    .protect = TRUE
+    with = glue("\\newline <<authors>>",.open = "<<",.close = ">>"),
+    where = glue("{\\textit{<<journal>>}}  {\\color{blue} \\underline{\\href{www.doi.org/<<doi>>}{doi.org/<<doi>>}}}",.open = "<<",.close = ">>"),
+    .protect = FALSE
   )
 ```
+
+
 
 **Preprints**
 
@@ -155,15 +116,20 @@ pubs %>%
   detailed_entries(
     what = title,
     when = pubdate,
-    with = authors,
-    where = glue("{journal} -- doi.org/{doi}"), 
-    .protect = TRUE
+    with = glue("\\newline <<authors>>",.open = "<<",.close = ">>"),
+    where = glue("{\\textit{<<journal>>}}  {\\color{blue} \\underline{\\href{www.doi.org/<<doi>>}{doi.org/<<doi>>}}}",.open = "<<",.close = ">>"),
+    .protect = FALSE
   )
 ```
 
 *Publications are updated programmatically each week.*
 
 # Presentations
+
+```{r get all pres}
+presentations = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "pres") %>% 
+  arrange(desc(when))
+```
 
 **Talks**
 
@@ -192,7 +158,7 @@ presentations %>%
 # Service   
 
 ```{r service}
-service %>% 
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "service") %>% 
   detailed_entries(what = what,
                    when = when,
                    with = with,
@@ -203,6 +169,10 @@ service %>%
 # Skills
 
 ```{r skills}
-skills %>% 
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "skills") %>% 
+  group_by(category) %>% 
+  mutate(skill = paste(skill, collapse = ", ")) %>% 
+  ungroup() %>% 
+  unique() %>% 
   detailed_entries(what = skill, with = category)
 ```
