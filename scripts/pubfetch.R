@@ -7,29 +7,36 @@ require(xml2)
 
 get_pubmed <- function(term) {
   pmids = rentrez::entrez_search("pubmed", term)
-  fetch = purrr::map_df(pmids$ids, function(.x) {
-    doc = rentrez::entrez_fetch("pubmed",.x,rettype = "xml", parsed = F) %>% xml2::read_xml()
-    authors = doc %>% xml2::xml_find_all("//Author") %>% 
-      map_chr(function(.x) {
-        initials = xml_find_first(.x, "./Initials") %>% xml_text
-        last_name = xml_find_first(.x, "./LastName") %>% xml_text
-        stringsAsFactors = FALSE
-        return(glue("{initials}, {last_name}"))
-      })
-    doi = doc %>% xml2::xml_find_all("//PubmedData/ArticleIdList/ArticleId") %>% xml2::as_list()
-    pubyear = xml_find_all(doc, "//PubDate/Year") %>% xml_text
-    pubmonth = xml_find_all(doc, "//PubDate/Month") %>% xml_text
-    pubday = xml_find_all(doc, "//PubDate/Day") %>% xml_text
-    title = doc %>% xml_find_all("//ArticleTitle") %>% xml_text
-    pubdate = glue("{pubyear}-{pubmonth}-{pubday}")
-    authors = paste(authors, collapse = "; ")
-    journal = doc %>% xml_find_all("//Title") %>% xml_text
-    doi = doi[[3]][[1]]
+  fetch = rentrez::entrez_fetch("pubmed",pmids$ids,rettype = "xml", parsed = F) %>% xml2::read_xml() %>% xml2::as_list() %>% pluck(1)
+  data = purrr::map_df(fetch, function(doc) {
+    authorlist = doc %>% pluck("MedlineCitation","Article","AuthorList") %>% 
+      keep(~ length(.x) >= 3)
+    authors = map_chr(authorlist, function(.x) {
+      initials = pluck(.x, "Initials",1)
+      last_name = pluck(.x, "LastName",1)
+      stringsAsFactors = F
+      return(glue("{initials} {last_name}"))
+    })
+    first_author = glue('{pluck(authorlist, 1, "ForeName",1)} {pluck(authorlist, 1, "LastName",1)}')
+    last_author = glue('{pluck(authorlist, length(authorlist), "ForeName",1)} {pluck(authorlist, length(authorlist), "LastName",1)}')
+    doi = doc %>% pluck("PubmedData","ArticleIdList") %>% 
+      keep(~ attr(.x,"IdType") == "doi") %>% 
+      pluck("ArticleId",1)
+    pubmed = doc %>% pluck("PubmedData","History") %>% 
+      keep(~ attr(.x,"PubStatus") == "pubmed")
+    pubyear = pubmed %>% pluck("PubMedPubDate","Year",1) 
+    pubmonth = pubmed %>% pluck("PubMedPubDate","Month",1) 
+    pubday = pubmed %>% pluck("PubMedPubDate","Day",1)
+    pubdate = glue("{pubyear}-{pubmonth}-{pubday}") 
+    title = doc %>% pluck("MedlineCitation","Article","ArticleTitle") %>% unlist() %>% paste0(collapse = "") 
+    journal = doc %>% pluck("MedlineCitation","Article","Journal","Title",1)
+    authors = paste(authors, collapse = ", ")
+    message(glue("found paper published on {pubdate}"))
     return(list(title = title, authors = authors, pubdate = pubdate, journal = journal, doi = doi))
     })
-  fetch = filter(fetch, !grepl("Erratum",fetch$title))
-  fetch = filter(fetch, !grepl("Correction",fetch$title))
-  return(fetch)
+  data = filter(data, !grepl("Erratum",data$title))
+  data = filter(data, !grepl("Correction",data$title))
+  return(data)
 }
 
 get_biorxiv <- function(dois) {
@@ -37,8 +44,12 @@ get_biorxiv <- function(dois) {
   fetch = map_df(dois, function(.x) {
     bio_pubs = biorxiv_content(doi = .x)
     doi = bio_pubs[[1]]$doi
-    authors = gsub("\\. ","",bio_pubs[[1]]$authors)
-    authors = gsub("\\.","",authors)
+    authorlist = gsub("\\. ","",bio_pubs[[1]]$authors) %>% gsub("\\.","",.) %>% strsplit("; ") %>% pluck(1)
+    authorlist = map_chr(authorlist, function(.x){
+      split = strsplit(.x,", ") %>% pluck(1)
+      author = paste(split[2],split[1])
+    })
+    authors = paste(authorlist, collapse = ", ")
     title = bio_pubs[[1]]$title
     date = bio_pubs[[1]]$date
     pubd = bio_pubs[[1]]$published
