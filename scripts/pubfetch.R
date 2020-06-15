@@ -43,8 +43,8 @@ get_biorxiv <- function(dois) {
   
   fetch = map_df(dois, function(.x) {
     bio_pubs = biorxiv_content(doi = .x)
-    doi = bio_pubs[[1]]$doi
-    authorlist = gsub("\\. ","",bio_pubs[[1]]$authors) %>% gsub("\\.","",.) %>% strsplit("; ") %>% pluck(1)
+    doi = bio_pubs[[length(bio_pubs)]]$doi
+    authorlist = gsub("\\. ","",bio_pubs[[length(bio_pubs)]]$authors) %>% gsub("\\.","",.) %>% strsplit("; ") %>% pluck(1)
     authorlist = map_chr(authorlist, function(.x){
       split = strsplit(.x,", ") %>% pluck(1)
       author = paste(split[2],split[1])
