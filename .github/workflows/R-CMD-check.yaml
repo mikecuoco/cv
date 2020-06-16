@@ -2,6 +2,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - master
@@ -37,4 +39,3 @@ jobs:
           prerelease: true
           title: Development Build
           files: cv/cv.pdf
-
