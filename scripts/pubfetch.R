@@ -1,9 +1,5 @@
 # get author publications
-require(rentrez)
-require(biorrxiv)
-require(dplyr)
-require(purrr)
-require(xml2)
+source("scripts/install.R")
 
 get_pubmed <- function(term) {
   pmids = rentrez::entrez_search("pubmed", term)
