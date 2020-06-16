@@ -31,7 +31,7 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@master
         with: 
-          r-version: '3.6.3'
+          r-version: '4.0.1'
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v1
         with:
@@ -44,18 +44,18 @@ jobs:
         run: | 
           sudo apt-get install libcurl4-openssl-dev
           sudo apt-get install libsodium-dev
-      - name: Install R dependencies
-        run: |
-          install.packages(c("remotes", "rcmdcheck"))
-          remotes::install_deps(dependencies = TRUE)
-          source("scripts/install.R")
-        shell: Rscript {0}
       - uses: actions/cache@v2
         with:
           path: ~/.local/share/renv
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-renv-
+      - name: Install R dependencies
+        run: |
+          install.packages(c("remotes", "rcmdcheck"))
+          remotes::install_deps(dependencies = TRUE)
+          source("scripts/install.R")
+        shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
@@ -70,5 +70,5 @@ jobs:
           automatic_release_tag: latest
           prerelease: false
           draft: false
-          title: $TIME
+          title: ${{ TIME }}
           files: cv/cv.pdf
