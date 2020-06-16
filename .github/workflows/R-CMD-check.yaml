@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
+        uses: marvinpinto/action-automatic-releases@latest
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
@@ -25,9 +26,15 @@ jobs:
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
-      - name: Release
-        uses: fnkr/github-action-ghr@v1
-        env:
-          GHR_PATH: rmarkdown::render("cv/cv.Rmd")
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: rmarkdown::render("cv/cv.Rmd")
+        shell: Rscript {0}
+      - name: Create Release
+        id: create_release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          prerelease: true
+          title: Development Build
+          files: cv/cv.pdf
 
