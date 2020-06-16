@@ -19,7 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
-      - uses: marvinpinto/action-automatic-releases@latest
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
@@ -32,6 +31,7 @@ jobs:
         run: rmarkdown::render("cv/cv.Rmd")
         shell: Rscript {0}
       - name: Create Release
+        uses: marvinpinto/action-automatic-releases@latest
         id: create_release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
