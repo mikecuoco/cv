@@ -22,3 +22,8 @@ jobs:
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
+      - name: Release
+        uses: fnkr/github-action-ghr@v1
+        env:
+          GHR_PATH: rmarkdown::render("cv/cv.Rmd")
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
