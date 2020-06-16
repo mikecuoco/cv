@@ -17,6 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get current time
+        uses: 1466587594/get-current-time@v1
+        id: current-time
+        with:
+          format: YYYYMMDD-HH
+          utcOffset: "+08:00"
+      - name: Use current time
+        env:
+          TIME: "${{ steps.current-time.outputs.time }}"
+          F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
+        run: echo $TIME $F_TIME
       - name: Setup R
         uses: r-lib/actions/setup-r@master
         with: 
@@ -56,8 +67,8 @@ jobs:
         id: create_release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: ${{ date }}          
+          automatic_release_tag: latest
           prerelease: false
           draft: false
-          title: ${{ date }}
+          title: $TIME
           files: cv/cv.pdf
