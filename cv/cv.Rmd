@@ -1,9 +1,9 @@
 ---
 name: Michael Sellers Cuoco
-position: "Bioinformatics and Systems Biology  PhD Student"
+position: "PhD Student, Bioinformatics and Systems Biology"
 address: "University of California, San Diego"
 phone: "(978) 505-0993" 
-www: 
+profilepic: pic.jpg
 email: mcuoco@ucsd.edu
 twitter: cuoco_michael
 github: mikecuoco
@@ -75,7 +75,6 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>%
 
 ```{r teaching}
 read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
-  arrange(desc(when)) %>% 
   detailed_entries(what = what, when = when, with = with, where = where, why = why)
 ```
 
