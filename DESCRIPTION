@@ -16,3 +16,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports:
   rmarkdown
+  vitae
+Remotes:
+  ropenscilabs/vitae
