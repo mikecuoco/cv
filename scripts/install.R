@@ -1,9 +1,9 @@
 # R packages --------------------------------------------------------------
 if (!require(pacman)) install.packages("pacman"); library(pacman)
 
-p_load_gh("ropenscilabs/tic")
+p_load(usethis)
 p_load(tinytex)
-p_load(scholar)
+p_load(renv)
 p_load_gh("ropenscilabs/vitae")
 p_load(tidyverse)
 p_load(lubridate)
