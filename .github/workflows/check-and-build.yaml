@@ -7,8 +7,10 @@ on:
   pull_request:
     branches:
       - master
+  schedule:
+    - cron: "0 0 * 0 0"
 
-name: R-CMD-check
+name: check-and-build
 
 jobs:
   R-CMD-check:
@@ -28,6 +30,8 @@ jobs:
         uses: r-lib/actions/setup-tinytex@v1
       - run: tlmgr --version
       - name: Install dependencies
+        run: sudo apt-get install libcurl4-openssl-dev
+      - name: Install R dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
