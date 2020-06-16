@@ -19,8 +19,9 @@ output:
 knitr::opts_chunk$set(echo = FALSE, 
                       warning = FALSE,
                       message = FALSE)
-source("../scripts/install.R")
-source("../scripts/pubfetch.R")
+knitr::opts_knit$set(root.dir = here::here())
+source(here::here("scripts/install.R"))
+source(here::here("scripts/pubfetch.R"))
 gs4_deauth()
 ```
 

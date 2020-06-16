@@ -1,5 +1,6 @@
 # get author publications
-source("scripts/install.R")
+library(here)
+source(here::here("scripts/install.R"))
 
 get_pubmed <- function(term) {
   pmids = rentrez::entrez_search("pubmed", term)
