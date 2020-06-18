@@ -32,7 +32,7 @@ jobs:
       - name: Cache R Packages
         uses: actions/cache@v2
         with:
-          path: ${{ env.R_LIBS_USER }}
+          path: ~/.local/share/renv
           key: ${{ runner.os }}-renv-${{ hashFiles('renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-renv-
@@ -50,8 +50,8 @@ jobs:
       - name: R-CMD-CHECK
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
-      - name: Build CV
-        run: rmarkdown::render("cv/cv.Rmd")
+      - name: Build
+        run: rmarkdown::render("cv/cv.Rmd", output_dir = "cv")
         shell: Rscript {0}
       - name: Commit results
         run: |
