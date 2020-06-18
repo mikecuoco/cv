@@ -51,10 +51,9 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
       - name: Build
-        run: rmarkdown::render("cv/cv.Rmd", output_dir = "cv")
-        shell: Rscript {0}
+        run: Rscript -e 'rmarkdown::render("cv/cv.Rmd", output_dir = "cv")'
       - name: Commit results
         run: |
-          git commit cv/cv.pdf cv/cv.md -m 'Re-build cv.Rmd' || echo "No changes to commit"
+          git commit cv/cv.pdf -m 'Re-build cv.Rmd' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
