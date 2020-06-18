@@ -12,7 +12,8 @@ aboutme: "Molecular biologist and bioinformatician focused on gene regulation in
 date: "`r format(Sys.time(), '%B %Y')`"
 headcolor: "00008B"
 output: 
-  vitae::hyndman: default
+  vitae::hyndman: 
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
@@ -31,8 +32,8 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "edu") %>%
   detailed_entries(when = glue("{month(start_date,T)} {year(start_date)}--
                                 {month(end_date,T)} {year(end_date)}"),   
                    what = degree,
-                   where = loc,
-                   with = uni,
+                   with = loc,
+                   where = uni,
                    why = details)
 
 ```
@@ -44,8 +45,8 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "honors") %>%
   detailed_entries(
     what = what,
     when = when,
-    with = with,
     where = where,
+    with = with,
     why = details)
 ```
 
@@ -57,8 +58,8 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>%
     what = role,
     when = glue("{month(start_date, T)} {year(start_date)}--
                 {month(end_date, T)} {year(end_date)}"),
-    with = glue("{group}, {institution}, {uni}"),
-    where = where,
+    where = glue("{group}, {institution}, {uni}"),
+    with = loc,
     why = details)
 ```
 
@@ -69,14 +70,24 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>%
 ```{r training}
 read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>% 
   arrange(desc(when)) %>% 
-  detailed_entries(what = what, with = with, when = when, where = where, why = why)
+  detailed_entries(
+    what = what,
+    with = with, 
+    when = when, 
+    where = where, 
+    why = why)
 ```
 
 # Teaching
 
 ```{r teaching}
 read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
-  detailed_entries(what = what, when = when, with = with, where = where, why = why)
+  detailed_entries(
+    what = what, 
+    when = when, 
+    with = with, 
+    where = where, 
+    why = why)
 ```
 
 # Publications
@@ -89,7 +100,9 @@ pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate))
 pubs = bind_rows(pubmed, biorxiv) %>% 
   mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
          preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE),
-         authors = str_replace(authors,"MS Cuoco","\\\\underline{\\\\textbf{MS Cuoco}}"))
+         authors = str_replace(authors,"MS Cuoco","\\\\underline{\\\\textbf{MS Cuoco}}")) %>% 
+  mutate(authors = case_when(doi == "10.7554/eLife.06416" ~ glue("<<authors>>       (\\\\\\underline{\\\\\\textbf{MS Cuoco}} listed at co-investigator)", .open = "<<", .close = ">>"),
+                             doi != "10.7554/eLife.06416" ~ authors))
 ```
 
 **Published**
