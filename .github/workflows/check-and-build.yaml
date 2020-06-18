@@ -17,17 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get current time
-        uses: 1466587594/get-current-time@v1
-        id: current-time
-        with:
-          format: YYYYMMDD-HH
-          utcOffset: "+08:00"
-      - name: Use current time
-        env:
-          TIME: "${{ steps.current-time.outputs.time }}"
-          F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
-        run: echo $TIME $F_TIME
       - name: Setup R
         uses: r-lib/actions/setup-r@master
         with: 
@@ -40,36 +29,32 @@ jobs:
       - name: Setup TinyTex 
         uses: r-lib/actions/setup-tinytex@v1
       - run: tlmgr --version
-      - name: Install dependencies
+      - name: Cache R Packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+      - name: Install system dependencies
         run: | 
           sudo apt-get install libcurl4-openssl-dev
           sudo apt-get install libsodium-dev
-      - name: Check Cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.local/share/renv
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-renv-
       - name: Install R dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck"))
+          install.packages(c("remotes", "rcmdcheck","renv"))
           remotes::install_deps(dependencies = TRUE)
+          renv::restore()
           source("scripts/install.R")
         shell: Rscript {0}
-      - name: Check
+      - name: R-CMD-CHECK
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
-      - name: Build
+      - name: Build CV
         run: rmarkdown::render("cv/cv.Rmd")
         shell: Rscript {0}
-      - name: Create Release
-        uses: marvinpinto/action-automatic-releases@latest
-        id: create_release
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: latest
-          prerelease: false
-          draft: false
-          title: CV and souce code
-          files: cv/cv.pdf
+      - name: Commit results
+        run: |
+          git commit cv/cv.pdf cv/cv.md -m 'Re-build cv.Rmd' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+
