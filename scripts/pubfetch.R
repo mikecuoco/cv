@@ -4,7 +4,8 @@ source(here::here("scripts/install.R"))
 
 get_pubmed <- function(term) {
   pmids = rentrez::entrez_search("pubmed", term)
-  fetch = rentrez::entrez_fetch("pubmed",pmids$ids,rettype = "xml", parsed = F) %>% xml2::read_xml() %>% xml2::as_list() %>% pluck(1)
+  fetch = rentrez::entrez_fetch("pubmed",pmids$ids,rettype = "xml", parsed = F) %>% 
+    xml2::read_xml() %>% xml2::as_list() %>% pluck(1)
   data = purrr::map_df(fetch, function(doc) {
     authorlist = doc %>% pluck("MedlineCitation","Article","AuthorList") %>% 
       keep(~ length(.x) >= 3)
