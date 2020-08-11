@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "`r format(Sys.time(), '%B %Y')`"
+date: "Updated `r format(Sys.time(), '%B %d %Y')`"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -37,8 +37,7 @@ gs4_auth()
 # Education 
 ```{r education}
 read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "edu") %>%
-  detailed_entries(when = glue("{month(start_date,T)} {year(start_date)}--
-                                {month(end_date,T)} {year(end_date)}"),   
+  detailed_entries(when = glue("{month(start_date,T)} {year(start_date)}--{month(end_date,T)} {year(end_date)}"),   
                    what = degree,
                    with = loc,
                    where = uni,
@@ -64,8 +63,7 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "honors") %>%
 read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>% 
   detailed_entries(
     what = role,
-    when = glue("{month(start_date, T)} {year(start_date)}--
-                {month(end_date, T)} {year(end_date)}"),
+    when = glue("{month(start_date, T)} {year(start_date)}--{month(end_date, T)} {year(end_date)}"),
     where = glue("{group}, {institution}, {uni}"),
     with = loc,
     why = details)
@@ -120,8 +118,8 @@ pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate))
 pubs = bind_rows(pubmed, biorxiv) %>% 
   mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
          preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE),
-         authors = str_replace(authors,"MS Cuoco","\\\\underline{\\\\textbf{MS Cuoco}}")) %>% 
-  mutate(authors = case_when(doi == "10.7554/eLife.06416" ~ glue("<<authors>>       (\\\\\\underline{\\\\\\textbf{MS Cuoco}} listed at co-investigator)", .open = "<<", .close = ">>"),
+         authors = str_replace(authors,"MS Cuoco","\\\\underline{MS Cuoco}")) %>% 
+  mutate(authors = case_when(doi == "10.7554/eLife.06416" ~ glue("<<authors>> {\\\\\\underline{MS Cuoco} listed at co-investigator}", .open = "<<", .close = ">>"),
                              doi != "10.7554/eLife.06416" ~ authors))
 ```
 
