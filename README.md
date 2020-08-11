@@ -1,5 +1,7 @@
 # Mike Cuoco's Curriculum Vitae
 
+[![R build status](https://github.com/mikecuoco/cv/workflows/check-and-build/badge.svg)](https://github.com/mikecuoco/cv/actions)
+
 Academic CV built using R - updated automatically from PubMed each week. See below for repository structure, tool links and to dos. 
 
 ## Structure
