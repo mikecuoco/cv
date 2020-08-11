@@ -1,7 +1,7 @@
 ---
 name: Michael Sellers Cuoco
-position: "PhD Student"
-address: "Bioinformatics and Systems Biology Program, University of California, San Diego"
+position: "PhD Student, Bioinformatics and Systems Biology"
+address: "University of California, San Diego"
 phone: "(978) 505-0993" 
 email: mcuoco@ucsd.edu
 twitter: cuoco_michael
@@ -98,13 +98,13 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>%
     why = why)
 ```
 
-# Publications
+# Authored Publications
 
 ```{r get publication data}
 # Publications - get from Pubmed
 ## BioRxiv
 dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
-biorxiv = get_biorxiv(dois) 
+biorxiv = get_biorxiv(dois = dois, term = "Cuoco") 
 ### Crossref back to sheet
 if (!all(biorxiv$doi %in% dois)){
   new_dois = biorxiv$doi[!biorxiv$doi %in% dois] %>% as.data.frame()
@@ -139,7 +139,7 @@ pubs %>%
   )
 ```
 
-**Preprints**
+**Preprint**
 
 ```{r preprints}
 pubs %>% 
@@ -153,7 +153,7 @@ pubs %>%
   )
 ```
 
-*Publications are updated programmatically each week.*
+*Publications and preprints are updated programmatically.*
 
 # Presentations
 

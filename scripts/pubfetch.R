@@ -37,22 +37,42 @@ get_pubmed <- function(term) {
   return(data)
 }
 
-get_biorxiv <- function(dois) {
+get_biorxiv <- function(dois = NULL, term = NULL) {
   
-  fetch = map_df(dois, function(.x) {
-    bio_pubs = biorxiv_content(doi = .x)
-    doi = bio_pubs[[length(bio_pubs)]]$doi
-    authorlist = gsub("\\. ","",bio_pubs[[length(bio_pubs)]]$authors) %>% gsub("\\.","",.) %>% strsplit("; ") %>% pluck(1)
-    authorlist = map_chr(authorlist, function(.x){
-      split = strsplit(.x,", ") %>% pluck(1)
-      author = paste(split[2],split[1])
+  # TODO: condese these into single function
+  
+  # look for specified DOIs
+  if (!is.null(dois)){
+    doi_fetch = map_df(dois, function(.x) {
+      bio_pubs = biorxiv_content(doi = .x, format = "df") %>%
+        filter(type != "withdrawn")
+      authorlist = gsub("\\. ","",bio_pubs$authors) %>% gsub("\\.","",.) %>% strsplit("; ") %>% pluck(nrow(bio_pubs))
+      authorlist = map_chr(authorlist, function(.x){
+        split = strsplit(.x,", ") %>% pluck(1)
+        author = paste(split[2],split[1]) %>% trimws()
+      })
+      bio_pubs = bio_pubs[nrow(bio_pubs),]
+      bio_pubs$authors = paste(authorlist, collapse = ", ")
+      return(as.list(bio_pubs))
     })
-    authors = paste(authorlist, collapse = ", ")
-    title = bio_pubs[[1]]$title
-    date = bio_pubs[[1]]$date
-    pubd = bio_pubs[[1]]$published
-    return(list(title = title, authors = authors, pubdate = date, journal = "BioRxiv", doi = doi, pubd = pubd))
-  })
+  }
+  
+  # fetch all articles from last 7 days, then filter them for a term
+  if (!is.null(term)) {
+    term_fetch = biorxiv_content(from = today()-4, to = today(), limit = "*", format = "df") %>%
+      filter(grepl(term, authors), type != "withdrawn")
+    term_fetch$authors = map_chr(term_fetch$authors, function(.x){
+      .x = gsub("\\. ","", .x) %>% gsub("\\.","",.) %>% strsplit("; ") %>% unlist()
+      .x = map_chr(.x, function(.y){
+        split = strsplit(.y,", ") %>% pluck(1)
+        author = paste(split[2],split[1]) %>% trimws()
+      })
+      .x = paste(.x, collapse = ", ")
+    })
+  }
+  
+  fetch = bind_rows(doi_fetch, term_fetch) %>% mutate(journal = "bioRxiv", pubdate = date, pubd = published != "NA")
   
   return(fetch)
+  
 }
