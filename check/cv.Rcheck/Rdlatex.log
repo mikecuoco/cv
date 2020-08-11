@@ -1,0 +1,190 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+
+(/private/var/folders/31/vm3rnd250gl47sx9gznl3z0c0000gq/T/Rtmpns1aKF/Rd2pdf11c6
+462e27531/Rd2.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-03>
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo))
+(/usr/local/Cellar/r/4.0.2_1/lib/R/share/texmf/tex/latex/Rd.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+ (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys
+.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+)) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/atbegshi/atbegshi.sty)
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/atveryend/atveryend.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfileche
+ck.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecount
+er.sty)))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty)
+Writing index file Rd2.idx
+
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdfmode
+.def)
+No file Rd2.aux.
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlest
+ring.sty)) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1phv.fd)
+No file Rd2.ind.
+[1{/Users/mcuoco/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ ){/Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/Users
+/mcuoco/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</Us
+ers/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolat
+a-zi4r.pfb></Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/urw/helvetic/u
+hvr8a.pfb></Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8
+a.pfb></Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pf
+b>
+Output written on Rd2.pdf (1 page, 41148 bytes).
+Transcript written on Rd2.log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+
+(/private/var/folders/31/vm3rnd250gl47sx9gznl3z0c0000gq/T/Rtmpns1aKF/Rd2pdf11c6
+462e27531/Rd2.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-03>
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo))
+(/usr/local/Cellar/r/4.0.2_1/lib/R/share/texmf/tex/latex/Rd.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex)))))
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+ (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys
+.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+)) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/atbegshi/atbegshi.sty)
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/atveryend/atveryend.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfileche
+ck.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecount
+er.sty)))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 377.
+
+) (/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty)
+Writing index file Rd2.idx
+
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdfmode
+.def) (./Rd2.aux)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlest
+ring.sty)) (./Rd2.out) (./Rd2.out)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/Users/mcuoco/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+)
+No file Rd2.ind.
+[1{/Users/mcuoco/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./Rd2.aux) ){/Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.
+enc}{/Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1
+-0.enc}</Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata
+/Inconsolata-zi4r.pfb></Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/urw
+/helvetic/uhvr8a.pfb></Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb></Users/mcuoco/Library/TinyTeX/texmf-dist/fonts/type1/urw/time
+s/utmr8a.pfb>
+Output written on Rd2.pdf (1 page, 41148 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘cv-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/31/vm3rnd250gl47sx9gznl3z0c0000gq/T//Rtmpns1aKF/Rd2pdf11c6462e27531'

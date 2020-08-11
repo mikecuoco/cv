@@ -1,0 +1,209 @@
+---
+name: Michael Sellers Cuoco
+position: "PhD Student"
+address: "Bioinformatics and Systems Biology Program, University of California, San Diego"
+phone: "(978) 505-0993" 
+email: mcuoco@ucsd.edu
+twitter: cuoco_michael
+github: mikecuoco
+orcid: "0000-0003-2163-5120"
+# aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: "00008B"
+output: 
+  vitae::hyndman: 
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE,
+                      message = FALSE)
+knitr::opts_knit$set(root.dir = here::here())
+
+source(here::here("scripts/install.R"))
+source(here::here("scripts/pubfetch.R"))
+
+home = system("echo $HOME")
+
+options(
+  gargle_oauth_cache = glue(home,"/secrets"),
+  gargle_oauth_email = "mcuoco12@gmail.com",
+)
+
+gs4_auth()
+```
+
+# Education 
+```{r education}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "edu") %>%
+  detailed_entries(when = glue("{month(start_date,T)} {year(start_date)}--
+                                {month(end_date,T)} {year(end_date)}"),   
+                   what = degree,
+                   with = loc,
+                   where = uni,
+                   why = details)
+
+```
+# Honors and Awards
+
+```{r honors}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "honors") %>%
+  arrange(desc(when)) %>% 
+  detailed_entries(
+    what = what,
+    when = when,
+    where = where,
+    with = with,
+    why = details)
+```
+
+# Experience
+
+```{r research}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>% 
+  detailed_entries(
+    what = role,
+    when = glue("{month(start_date, T)} {year(start_date)}--
+                {month(end_date, T)} {year(end_date)}"),
+    where = glue("{group}, {institution}, {uni}"),
+    with = loc,
+    why = details)
+```
+
+\pagebreak
+
+# Professional Training
+
+```{r training}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>% 
+  arrange(desc(when)) %>% 
+  detailed_entries(
+    what = what,
+    with = with, 
+    when = when, 
+    where = where, 
+    why = why)
+```
+
+# Teaching
+
+```{r teaching}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
+  detailed_entries(
+    what = what, 
+    when = when, 
+    with = with, 
+    where = where, 
+    why = why)
+```
+
+# Publications
+
+```{r get publication data}
+# Publications - get from Pubmed
+## BioRxiv
+dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
+biorxiv = get_biorxiv(dois) 
+### Crossref back to sheet
+if (!all(biorxiv$doi %in% dois)){
+  new_dois = biorxiv$doi[!biorxiv$doi %in% dois] %>% as.data.frame()
+  googlesheets4::sheet_append("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv", data = new_dois)
+}
+### remove already published 
+# biorxiv = filter(biorxiv, pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
+### arrange by date
+biorxiv = select(biorxiv, -pubd) %>% arrange(desc(pubdate)) 
+
+## PubMed
+pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate)) 
+pubs = bind_rows(pubmed, biorxiv) %>% 
+  mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
+         preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE),
+         authors = str_replace(authors,"MS Cuoco","\\\\underline{\\\\textbf{MS Cuoco}}")) %>% 
+  mutate(authors = case_when(doi == "10.7554/eLife.06416" ~ glue("<<authors>>       (\\\\\\underline{\\\\\\textbf{MS Cuoco}} listed at co-investigator)", .open = "<<", .close = ">>"),
+                             doi != "10.7554/eLife.06416" ~ authors))
+```
+
+**Published**
+
+```{r published}
+pubs %>%
+  dplyr::filter(!preprint) %>%
+  detailed_entries(
+    what = title,
+    when = pubdate,
+    with = glue("\\newline <<authors>>",.open = "<<",.close = ">>"),
+    where = glue("{\\textit{<<journal>>}}  {\\color{blue} \\underline{\\href{www.doi.org/<<doi>>}{doi.org/<<doi>>}}}",.open = "<<",.close = ">>"),
+    .protect = FALSE
+  )
+```
+
+**Preprints**
+
+```{r preprints}
+pubs %>% 
+  dplyr::filter(preprint) %>% 
+  detailed_entries(
+    what = title,
+    when = pubdate,
+    with = glue("\\newline <<authors>>",.open = "<<",.close = ">>"),
+    where = glue("{\\textit{<<journal>>}}  {\\color{blue} \\underline{\\href{www.doi.org/<<doi>>}{doi.org/<<doi>>}}}",.open = "<<",.close = ">>"),
+    .protect = FALSE
+  )
+```
+
+*Publications are updated programmatically each week.*
+
+# Presentations
+
+```{r get all pres}
+presentations = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "pres") %>% 
+  arrange(desc(when))
+```
+
+**Talks**
+
+```{r talks}
+presentations %>% 
+  dplyr::filter(type == "talk") %>%
+  detailed_entries(what = what,
+                   when = glue("{month(when,T)} {year(when)}"),
+                   # with = with,
+                   where = glue("{with}; {where}"),
+                   .protect = TRUE)
+```
+
+**Posters**
+
+```{r posters}
+presentations %>% 
+  dplyr::filter(type == "poster") %>%
+  detailed_entries(what = what,
+                   when = glue("{month(when,T)} {year(when)}"),
+                   # with = with,
+                   where = glue("{with}; {where}"),
+                   .protect = TRUE)
+```
+
+# Service   
+
+```{r service}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "service") %>% 
+  detailed_entries(what = what,
+                   when = when,
+                   with = with,
+                   where = where,
+                   why = why)
+```
+
+# Skills
+
+```{r skills}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "skills") %>% 
+  group_by(category) %>% 
+  mutate(skill = paste(skill, collapse = ", ")) %>% 
+  ungroup() %>% 
+  unique() %>% 
+  detailed_entries(what = skill, with = category)
+```
