@@ -24,11 +24,11 @@ knitr::opts_knit$set(root.dir = here::here())
 source(here::here("scripts/install.R"))
 source(here::here("scripts/pubfetch.R"))
 
-home = system("echo $HOME")
+home = Sys.getenv("HOME")
 
 options(
   gargle_oauth_cache = glue(home,"/secrets"),
-  gargle_oauth_email = "mcuoco12@gmail.com",
+  gargle_oauth_email = "mcuoco12@gmail.com"
 )
 
 gs4_auth()
