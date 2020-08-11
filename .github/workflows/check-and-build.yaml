@@ -44,7 +44,7 @@ jobs:
       
       - name: Install essential dependencies
         run: |
-          install.packages(c('renv','remotes',"rcmdcheck")
+          install.packages(c('renv','remotes'))
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
