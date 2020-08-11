@@ -4,9 +4,6 @@ on:
       - master
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - master
   schedule:
     - cron: "0 0 * * *"
 
@@ -14,10 +11,18 @@ name: check-and-build
 
 jobs:
   check-and-build:
-    runs-on: ubuntu-latest
-    gargle_auth: GARGLE_PASSWORD
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: ubuntu-latest, r: '4.0', gargle_auth: GARGLE_PASSWORD}
     env: 
       GARGLE_PASSWORD: ${{ secrets.GARGLE_PASSWORD }}
+      
     steps:
       - uses: actions/checkout@v2
       # - name: Decrypt large secret
