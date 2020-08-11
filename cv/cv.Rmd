@@ -1,14 +1,13 @@
 ---
 name: Michael Sellers Cuoco
-position: "PhD Student, Bioinformatics and Systems Biology"
-address: "University of California, San Diego"
+position: "PhD Student"
+address: "Bioinformatics and Systems Biology Program, University of California, San Diego"
 phone: "(978) 505-0993" 
-profilepic: pic.jpg
 email: mcuoco@ucsd.edu
 twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
-aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
+# aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
 date: "`r format(Sys.time(), '%B %Y')`"
 headcolor: "00008B"
 output: 
