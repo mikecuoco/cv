@@ -16,7 +16,8 @@ jobs:
   check-and-build:
     runs-on: ubuntu-latest
     gargle_auth: GARGLE_PASSWORD
-    env: GARGLE_PASSWORD: ${{ secrets.GARGLE_PASSWORD }}
+    env: 
+      GARGLE_PASSWORD: ${{ secrets.GARGLE_PASSWORD }}
     steps:
       - uses: actions/checkout@v2
       # - name: Decrypt large secret
