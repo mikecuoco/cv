@@ -19,3 +19,5 @@ Imports:
   vitae
 Remotes:
   ropenscilabs/vitae
+Suggests: 
+    sodium

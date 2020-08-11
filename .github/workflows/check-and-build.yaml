@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       - name: Setup R
         uses: r-lib/actions/setup-r@master
         with: 
@@ -40,6 +44,7 @@ jobs:
         run: | 
           sudo apt-get install libcurl4-openssl-dev
           sudo apt-get install libsodium-dev
+          sudo apt-get install gcg
       - name: Install R dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck","renv"))
@@ -51,7 +56,11 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
         shell: Rscript {0}
       - name: Build
-        run: Rscript -e 'rmarkdown::render("cv/cv.Rmd", output_dir = "cv")'
+        env:
+          super_secret: ${{ secrets.GDRIVE_SECRET }}
+        run: |
+          rmarkdown::render("cv/cv.Rmd", output_dir = "cv")
+        shell: Rscript {0}
       - name: Commit results
         run: |
           git config --global user.email "mcuoco12@gmail.com"

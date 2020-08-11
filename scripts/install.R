@@ -14,6 +14,7 @@ p_load(googledrive)
 p_load(googlesheets4)
 p_load(rentrez)
 p_load(xml2)
+p_load(gargle)
 p_load_gh("nicholasmfraser/rbiorxiv")
 
 
