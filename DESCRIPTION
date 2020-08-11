@@ -9,6 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-2163-5120"))
 Description: Generates my CV.
 Encoding: UTF-8
+License: MIT
 Language: es
 LazyData: true
 Roxygen: list(markdown = TRUE)
