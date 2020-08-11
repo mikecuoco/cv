@@ -12,19 +12,17 @@ Academic CV built using R - updated automatically from PubMed and BioRxiv every 
 
 ## Tools
 
-- The [`{vitae}`](https://docs.ropensci.org/vitae/) :package: is used to provide a CV template.
-- [`{tidyverse}`](https://www.tidyverse.org) :tool: are used for data read in and manipulation.
-- [`{here}`](https://here.r-lib.org) :package: for path management.
-- [`{rentrez}`](https://github.com/ropensci/rentrez) :package: to pull papers from PubMed using Entrez.
-- [`{rbiorxiv}`](https://github.com/nicholasmfraser/rbiorxiv) :package: to pull papers from BioRxiv.
-- [`{googlesheets4}`](https://github.com/tidyverse/googlesheets4) :package: to pull CV data from a googlesheet (must be public)
-- [`{tinytex}`](https://github.com/yihui/tinytex) :package: to manage LaTex installation and additional packages.
+- [`{vitae}`](https://docs.ropensci.org/vitae/) :package:  is used to provide a CV template.
+- [`{rentrez}`](https://github.com/ropensci/rentrez) :package:  to pull papers from PubMed using Entrez.
+- [`{rbiorxiv}`](https://github.com/nicholasmfraser/rbiorxiv) :package:  to pull papers from BioRxiv.
+- [`{googlesheets4}`](https://github.com/tidyverse/googlesheets4) :package:  to pull CV data from a googlesheet (must be public)
 
 ## To do
 
 - [X] successfully build 
 - [X] add biorxiv updating
   - [ ] refresh oauth token every week
-- [ ] add total citations
+- [ ] fix margins (locations are offset)
+- [ ] add total citations (use google scholar)
 - [ ] integrate with persional website
 
