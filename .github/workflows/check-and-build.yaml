@@ -2,8 +2,6 @@ on:
   push:
     branches:
       - master
-    tags:
-      - 'v*'
   schedule:
     - cron: "0 0 * * *"
 
@@ -19,28 +17,38 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: ubuntu-latest, r: '4.0', gargle_auth: GARGLE_PASSWORD}
-    env: 
-      GARGLE_PASSWORD: ${{ secrets.GARGLE_PASSWORD }}
+          - {os: ubuntu-latest, r: '4.0'}
       
     steps:
       - uses: actions/checkout@v2
-      # - name: Decrypt large secret
-      #   run: ./.github/scripts/decrypt_secret.sh
-      #   env:
-      #     LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          
       - name: Setup R
         uses: r-lib/actions/setup-r@master
         with: 
-          r-version: '4.0.1'
+          r-version: ${{ matrix.config.r }}
+          
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v1
         with:
           pandoc-version: '2.9.2' 
       - run: echo "# Test" | pandoc -t html
+      
       - name: Setup TinyTex 
         uses: r-lib/actions/setup-tinytex@v1
       - run: tlmgr --version
+      
+      - name: Query dependencies
+        run: |
+          install.packages(c('renv','remotes'))
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
+        
       - name: Cache R Packages
         uses: actions/cache@v2
         with:
@@ -48,26 +56,43 @@ jobs:
           key: ${{ runner.os }}-renv-${{ hashFiles('renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-renv-
+            
       - name: Install system dependencies
-        run: | 
-          sudo apt-get install libcurl4-openssl-dev
-          sudo apt-get install libsodium-dev
+        if: runner.os == 'Linux'
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "20.04"), sep = "\n")')
+          
       - name: Install R dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck","renv"))
+          remotes::install_cran("rcmdcheck")
           remotes::install_deps(dependencies = TRUE)
           renv::restore()
           source("scripts/install.R")
         shell: Rscript {0}
-      - name: R-CMD-CHECK
-        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+        run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
+        
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          path: check
+          
       - name: Build
         env:
           super_secret: ${{ secrets.GDRIVE_SECRET }}
         run: |
           rmarkdown::render("cv/cv.Rmd", output_dir = "cv")
         shell: Rscript {0}
+        
       - name: Commit results
         run: |
           git config --global user.email "mcuoco12@gmail.com"
