@@ -23,7 +23,8 @@ knitr::opts_chunk$set(echo = FALSE,
 knitr::opts_knit$set(root.dir = here::here())
 source(here::here("scripts/install.R"))
 source(here::here("scripts/pubfetch.R"))
-gs4_deauth()
+options(gargle_quiet = F)
+gs4_auth(email = "mcuoco12@gmail.com")
 ```
 
 # Education 
@@ -94,8 +95,20 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>%
 
 ```{r get publication data}
 # Publications - get from Pubmed
+## BioRxiv
 dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
-biorxiv = get_biorxiv(dois) %>% filter(pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
+biorxiv = get_biorxiv(dois) 
+### Crossref back to sheet
+if (!all(biorxiv$doi %in% dois)){
+  new_dois = biorxiv$doi[!biorxiv$doi %in% dois] %>% as.data.frame()
+  googlesheets4::sheet_append("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv", data = new_dois)
+}
+### remove already published 
+# biorxiv = filter(biorxiv, pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
+### arrange by date
+biorxiv = select(biorxiv, -pubd) %>% arrange(desc(pubdate)) 
+
+## PubMed
 pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate)) 
 pubs = bind_rows(pubmed, biorxiv) %>% 
   mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
@@ -118,8 +131,6 @@ pubs %>%
     .protect = FALSE
   )
 ```
-
-
 
 **Preprints**
 
