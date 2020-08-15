@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated August 14 2020"
+date: "Updated August 15 2020"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -69,4 +69,4 @@ output:
 
 # Skills
 
-\detailedsection{\detaileditem{R (advanced), Bash, Matlab, Python}{}{Programming}{}{\empty}}
+\detailedsection{\detaileditem{R (advanced), Bash, Matlab, Python}{}{Programming}{}{\empty}\detaileditem{tissue dissociation, cell line culture, flow cytometry}{}{Cellular biology}{}{\empty}\detaileditem{plasmid cloning, CRISPR gene editing, RNA-seq, ATAC-seq}{}{Molecular biology}{}{\empty}}
