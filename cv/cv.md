@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated August 29 2020"
+date: "Updated August 30 2020"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
