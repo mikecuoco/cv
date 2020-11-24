@@ -22,7 +22,8 @@ Academic CV built using R - updated automatically from PubMed and BioRxiv every 
 - [X] successfully build 
 - [X] add biorxiv updating
   - [ ] refresh oauth token every week
+- [ ] use docker to containerize
 - [ ] fix margins (locations are offset)
 - [ ] add total citations (use google scholar)
-- [ ] integrate with persional website
+- [ ] integrate with personal website
 
