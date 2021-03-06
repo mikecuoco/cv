@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated December 14 2020"
+date: "Updated March 06 2021"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -19,13 +19,18 @@ output:
 
 # Education 
 \begin{longtable}{@{\extracolsep{\fill}}ll}
+Sep 2020--Mar 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{PhD, Bioinformatics and Systems Biology}\hfill{\footnotesize San Diego, California}\newline
+  University of California, San Diego\par%
+  \empty%
+\vspace{\parsep}}\\
 May 2016--May 2018 & \parbox[t]{0.85\textwidth}{%
 \textbf{Postbaccalaureate coursework}\hfill{\footnotesize Cambridge, Massachusetts}\newline
   Harvard Extension School\par%
   \empty%
 \vspace{\parsep}}\\
 Sep 2012--May 2016 & \parbox[t]{0.85\textwidth}{%
-\textbf{BS in Cellular and Molecular Biology}\hfill{\footnotesize Hartford, Connecticut}\newline
+\textbf{BS, Cellular and Molecular Biology}\hfill{\footnotesize Hartford, Connecticut}\newline
   Trinity College\par%
   \vspace{0.1cm}\begin{minipage}{0.7\textwidth}%
 \begin{itemize}%
@@ -173,6 +178,26 @@ Jun 2011--Jul 2011 & \parbox[t]{0.85\textwidth}{%
 **Published**
 
 \begin{longtable}{@{\extracolsep{\fill}}ll}
+Mar 6, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Transcriptional mediators of treatment resistance in lethal prostate cancer.}\hfill{\footnotesize \newline MX He, \underline{MS Cuoco}, J Crowdis, A Bosma-Moody, Z Zhang, K Bi, A Kanodia, MJ Su, SY Ku, MM Garcia, AR Sweet, C Rodman, L DelloStritto, R Silver, J Steinharter, P Shah, B Izar, NC Walk, KP Burke, Z Bakouny, AK Tewari, D Liu, SY Camp, NI Vokes, K Salari, J Park, S Vigneau, L Fong, JW Russo, X Yuan, SP Balk, H Beltran, O Rozenblatt-Rosen, A Regev, A Rotem, ME Taplin, EM Van Allen}\newline
+  {\textit{Nature medicine}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41591-021-01244-6}{doi.org/10.1038/s41591-021-01244-6}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Mar 4, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Single-cell meta-analysis of SARS-CoV-2 entry genes across tissues and demographics.}\hfill{\footnotesize \newline C Muus, MD Luecken, G Eraslan, L Sikkema, A Waghray, G Heimberg, Y Kobayashi, ED Vaishnav, A Subramanian, C Smillie, KA Jagadeesh, ET Duong, E Fiskin, ET Triglia, M Ansari, P Cai, B Lin, J Buchanan, S Chen, J Shu, AL Haber, H Chung, DT Montoro, T Adams, H Aliee, SJ Allon, Z Andrusivova, I Angelidis, O Ashenberg, K Bassler, C Bécavin, I Benhar, J Bergenstråhle, L Bergenstråhle, L Bolt, E Braun, LT Bui, S Callori, M Chaffin, E Chichelnitskiy, J Chiou, TM Conlon, \underline{MS Cuoco}, ASE Cuomo, M Deprez, G Duclos, D Fine, DS Fischer, S Ghazanfar, A Gillich, B Giotti, J Gould, M Guo, AJ Gutierrez, AC Habermann, T Harvey, P He, X Hou, L Hu, Y Hu, A Jaiswal, L Ji, P Jiang, TS Kapellos, CS Kuo, L Larsson, MA Leney-Greene, K Lim, M Litviňuková, LS Ludwig, S Lukassen, W Luo, H Maatz, E Madissoon, L Mamanova, K Manakongtreecheep, S Leroy, CH Mayr, IM Mbano, AM McAdams, AN Nabhan, SK Nyquist, L Penland, OB Poirion, S Poli, C Qi, R Queen, D Reichart, I Rosas, JC Schupp, CV Shea, X Shi, R Sinha, RV Sit, K Slowikowski, M Slyper, NP Smith, A Sountoulidis, M Strunz, TB Sullivan, D Sun, C Talavera-López, P Tan, J Tantivit, KJ Travaglini, NR Tucker, KA Vernon, MH Wadsworth, J Waldman, X Wang, K Xu, W Yan, W Zhao, CGK Ziegler}\newline
+  {\textit{Nature medicine}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41591-020-01227-z}{doi.org/10.1038/s41591-020-01227-z}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Mar 3, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Multimodal pooled Perturb-CITE-seq screens in patient models define mechanisms of cancer immune evasion.}\hfill{\footnotesize \newline CJ Frangieh, JC Melms, PI Thakore, KR Geiger-Schuller, P Ho, AM Luoma, B Cleary, L Jerby-Arnon, S Malu, \underline{MS Cuoco}, M Zhao, CR Ager, M Rogava, L Hovey, A Rotem, C Bernatchez, KW Wucherpfennig, BE Johnson, O Rozenblatt-Rosen, D Schadendorf, A Regev, B Izar}\newline
+  {\textit{Nature genetics}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41588-021-00779-1}{doi.org/10.1038/s41588-021-00779-1}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Jan 27, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Opposing immune and genetic mechanisms shape oncogenic programs in synovial sarcoma.}\hfill{\footnotesize \newline L Jerby-Arnon, C Neftel, ME Shore, HR Weisman, ND Mathewson, MJ McBride, B Haas, B Izar, A Volorio, G Boulay, L Cironi, AR Richman, LC Broye, JM Gurski, CC Luo, R Mylvaganam, L Nguyen, S Mei, JC Melms, C Georgescu, O Cohen, JE Buendia-Buendia, A Segerstolpe, M Sud, \underline{MS Cuoco}, D Labes, S Gritsch, DR Zollinger, N Ortogero, JM Beechem, G Petur Nielsen, I Chebib, T Nguyen-Ngoc, M Montemurro, GM Cote, E Choy, I Letovanec, S Cherix, N Wagle, PK Sorger, AB Haynes, JT Mullen, I Stamenkovic, MN Rivera, C Kadoch, KW Wucherpfennig, O Rozenblatt-Rosen, ML Suvà, N Riggi, A Regev}\newline
+  {\textit{Nature medicine}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41591-020-01212-6}{doi.org/10.1038/s41591-020-01212-6}}}\par%
+  \empty%
+\vspace{\parsep}}\\
 Sep 6, 2020 & \parbox[t]{0.85\textwidth}{%
 \textbf{The Human and Mouse Enteric Nervous System at Single-Cell Resolution.}\hfill{\footnotesize \newline E Drokhlyansky, CS Smillie, N Van Wittenberghe, M Ericsson, GK Griffin, G Eraslan, D Dionne, \underline{MS Cuoco}, MN Goder-Reiser, T Sharova, O Kuksenko, AJ Aguirre, GM Boland, D Graham, O Rozenblatt-Rosen, RJ Xavier, A Regev}\newline
   {\textit{Cell}}  {\color{blue} \underline{\href{www.doi.org/10.1016/j.cell.2020.08.003}{doi.org/10.1016/j.cell.2020.08.003}}}\par%
@@ -223,6 +248,11 @@ Apr 29, 2015 & \parbox[t]{0.85\textwidth}{%
 **Preprint**
 
 \begin{longtable}{@{\extracolsep{\fill}}ll}
+Feb 2, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Multicellular immune hubs and their organization in MMRd and MMRp colorectal cancer}\hfill{\footnotesize \newline K Pelka, M Hofree, J Chen, S Sarkizova, JD Pirl, V Jorgji, A Bejnood, D Dionne, WH Ge, KH Xu, SX Chao, DR Zollinger, DJ Lieb, JW Reeves, CA Fuhrman, ML Hoang, T Delorey, LT Nguyen, J Waldman, M Klapholz, I Wakiro, O Cohen, CS Smillie, \underline{MS Cuoco}, J Wu, M-j Su, J Yeung, B Vijaykumar, AM Magnuson, N Asinovski, T Moll, MN Goder-Reiser, AS Applebaum, LK Brais, LK DelloStritto, SL Denning, ST Phillips, EK Hill, JK Meehan, DT Frederick, T Sharova, A Kanodia, EZ Todres, NA J}\newline
+  {\textit{bioRxiv}}  {\color{blue} \underline{\href{www.doi.org/10.1101/2021.01.30.426796}{doi.org/10.1101/2021.01.30.426796}}}\par%
+  \empty%
+\vspace{\parsep}}\\
 Sep 13, 2020 & \parbox[t]{0.85\textwidth}{%
 \textbf{Multi-modal pooled Perturb-CITE-Seq screens in patient models define novel mechanisms of cancer immune evasion}\hfill{\footnotesize \newline CJ Frangieh, JC Melms, PI Thakore, KR Geiger-Schuller, P Ho, AM Luoma, BR Cleary, S Malu, \underline{MS Cuoco}, M Zhao, M Rogava, L Hovey, A Rotem, C Bernatchez, KW Wucherpfennig, BE Johnson, O Rozenblatt-Rosen, D Schadendorf, A Regev, B Izar}\newline
   {\textit{bioRxiv}}  {\color{blue} \underline{\href{www.doi.org/10.1101/2020.09.01.267211}{doi.org/10.1101/2020.09.01.267211}}}\par%

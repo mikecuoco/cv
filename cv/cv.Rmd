@@ -31,7 +31,7 @@ options(
   gargle_oauth_email = "mcuoco12@gmail.com"
 )
 
-gs4_auth()
+gs4_deauth()
 ```
 
 # Education 
@@ -119,8 +119,7 @@ pubs = bind_rows(pubmed, biorxiv) %>%
   mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
          preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE),
          authors = str_replace(authors,"MS Cuoco","\\\\underline{MS Cuoco}")) %>% 
-  mutate(authors = case_when(doi == "10.7554/eLife.06416" ~ glue("<<authors>> {\\\\\\underline{MS Cuoco} listed at co-investigator}", .open = "<<", .close = ">>"),
-                             doi != "10.7554/eLife.06416" ~ authors))
+  mutate(authors = case_when(doi == "10.7554/eLife.06416" ~ glue("<<authors>> {\\\\\\underline{MS Cuoco} listed at co-investigator}", .open = "<<", .close = ">>"), doi != "10.7554/eLife.06416" ~ authors))
 ```
 
 **Published**
