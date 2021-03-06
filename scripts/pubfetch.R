@@ -39,7 +39,7 @@ get_pubmed <- function(term) {
 
 get_biorxiv <- function(dois = NULL, term = NULL) {
   
-  # TODO: condese these into single function
+  # TODO: condense these into single function
   
   # look for specified DOIs
   if (!is.null(dois)){
@@ -59,16 +59,23 @@ get_biorxiv <- function(dois = NULL, term = NULL) {
   
   # fetch all articles from last 7 days, then filter them for a term
   if (!is.null(term)) {
-    term_fetch = biorxiv_content(from = today()-4, to = today(), limit = "*", format = "df") %>%
-      filter(grepl(term, authors), type != "withdrawn")
-    term_fetch$authors = map_chr(term_fetch$authors, function(.x){
-      .x = gsub("\\. ","", .x) %>% gsub("\\.","",.) %>% strsplit("; ") %>% unlist()
-      .x = map_chr(.x, function(.y){
-        split = strsplit(.y,", ") %>% pluck(1)
-        author = paste(split[2],split[1]) %>% trimws()
+    # try to find biorxiv posts, catch errors
+    term_fetch = try(
+      biorxiv_content(from = today()-100, to = today(), limit = "*", format = "df") %>%
+      filter(grepl(term, authors), type != "withdrawn"), 
+      silent = T)
+    if (term_fetch[1] != "Error : no posts found\n"){
+      term_fetch$authors = map_chr(term_fetch$authors, function(.x){
+        .x = gsub("\\. ","", .x) %>% gsub("\\.","",.) %>% strsplit("; ") %>% unlist()
+        .x = map_chr(.x, function(.y){
+          split = strsplit(.y,", ") %>% pluck(1)
+          author = paste(split[2],split[1]) %>% trimws()
+        })
+        .x = paste(.x, collapse = ", ")
       })
-      .x = paste(.x, collapse = ", ")
-    })
+    } else {
+      term_fetch = doi_fetch[0,]
+    }
   }
   
   fetch = bind_rows(doi_fetch, term_fetch) %>% mutate(journal = "bioRxiv", pubdate = date, pubd = published != "NA")
