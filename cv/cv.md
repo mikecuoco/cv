@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated March 06 2021"
+date: "Updated March 07 2021"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -19,11 +19,6 @@ output:
 
 # Education 
 \begin{longtable}{@{\extracolsep{\fill}}ll}
-Sep 2020--Mar 2021 & \parbox[t]{0.85\textwidth}{%
-\textbf{PhD, Bioinformatics and Systems Biology}\hfill{\footnotesize San Diego, California}\newline
-  University of California, San Diego\par%
-  \empty%
-\vspace{\parsep}}\\
 May 2016--May 2018 & \parbox[t]{0.85\textwidth}{%
 \textbf{Postbaccalaureate coursework}\hfill{\footnotesize Cambridge, Massachusetts}\newline
   Harvard Extension School\par%
