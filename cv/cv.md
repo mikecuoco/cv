@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated March 07 2021"
+date: "Updated March 14 2021"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -186,6 +186,11 @@ Mar 4, 2021 & \parbox[t]{0.85\textwidth}{%
 Mar 3, 2021 & \parbox[t]{0.85\textwidth}{%
 \textbf{Multimodal pooled Perturb-CITE-seq screens in patient models define mechanisms of cancer immune evasion.}\hfill{\footnotesize \newline CJ Frangieh, JC Melms, PI Thakore, KR Geiger-Schuller, P Ho, AM Luoma, B Cleary, L Jerby-Arnon, S Malu, \underline{MS Cuoco}, M Zhao, CR Ager, M Rogava, L Hovey, A Rotem, C Bernatchez, KW Wucherpfennig, BE Johnson, O Rozenblatt-Rosen, D Schadendorf, A Regev, B Izar}\newline
   {\textit{Nature genetics}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41588-021-00779-1}{doi.org/10.1038/s41588-021-00779-1}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Mar 13, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Tumor and immune reprogramming during immunotherapy in advanced renal cell carcinoma.}\hfill{\footnotesize \newline K Bi, MX He, Z Bakouny, A Kanodia, S Napolitano, J Wu, G Grimaldi, DA Braun, \underline{MS Cuoco}, A Mayorga, L DelloStritto, G Bouchard, J Steinharter, AK Tewari, NI Vokes, E Shannon, M Sun, J Park, SL Chang, BA McGregor, R Haq, T Denize, S Signoretti, JL Guerriero, S Vigneau, O Rozenblatt-Rosen, A Rotem, A Regev, TK Choueiri, EM Van Allen}\newline
+  {\textit{Cancer cell}}  {\color{blue} \underline{\href{www.doi.org/10.1016/j.ccell.2021.02.015}{doi.org/10.1016/j.ccell.2021.02.015}}}\par%
   \empty%
 \vspace{\parsep}}\\
 Jan 27, 2021 & \parbox[t]{0.85\textwidth}{%
