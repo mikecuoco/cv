@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated March 14 2021"
+date: "Updated March 21 2021"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -250,6 +250,11 @@ Apr 29, 2015 & \parbox[t]{0.85\textwidth}{%
 \begin{longtable}{@{\extracolsep{\fill}}ll}
 Feb 2, 2021 & \parbox[t]{0.85\textwidth}{%
 \textbf{Multicellular immune hubs and their organization in MMRd and MMRp colorectal cancer}\hfill{\footnotesize \newline K Pelka, M Hofree, J Chen, S Sarkizova, JD Pirl, V Jorgji, A Bejnood, D Dionne, WH Ge, KH Xu, SX Chao, DR Zollinger, DJ Lieb, JW Reeves, CA Fuhrman, ML Hoang, T Delorey, LT Nguyen, J Waldman, M Klapholz, I Wakiro, O Cohen, CS Smillie, \underline{MS Cuoco}, J Wu, M-j Su, J Yeung, B Vijaykumar, AM Magnuson, N Asinovski, T Moll, MN Goder-Reiser, AS Applebaum, LK Brais, LK DelloStritto, SL Denning, ST Phillips, EK Hill, JK Meehan, DT Frederick, T Sharova, A Kanodia, EZ Todres, NA J}\newline
+  {\textit{bioRxiv}}  {\color{blue} \underline{\href{www.doi.org/10.1101/2021.01.30.426796}{doi.org/10.1101/2021.01.30.426796}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Feb 1, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Multicellular immune hubs and their organization in MMRd and MMRp colorectal cancer}\hfill{\footnotesize \newline K Pelka, M Hofree, J Chen, S Sarkizova, JD Pirl, V Jorgji, A Bejnood, D Dionne, WH Ge, KH Xu, SX Chao, DR Zollinger, DJ Lieb, JW Reeves, CA Fuhrman, ML Hoang, T Delorey, LT Nguyen, JA Waldmann, M Klapholz, I Wakiro, O Cohen, CS Smillie, \underline{MS Cuoco}, J Wu, M-j Su, J Yeung, B Vijaykumar, AM Magnuson, N Asinovski, T Moll, MN Goder-Reiser, AS Applebaum, LK Brais, LK DelloStritto, SL Denning, ST Phillips, EK Hill, JK Meehan, DT Frederick, T Sharova, A Kanodia, EZ Todres}\newline
   {\textit{bioRxiv}}  {\color{blue} \underline{\href{www.doi.org/10.1101/2021.01.30.426796}{doi.org/10.1101/2021.01.30.426796}}}\par%
   \empty%
 \vspace{\parsep}}\\
