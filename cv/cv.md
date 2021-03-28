@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated March 21 2021"
+date: "Updated March 28 2021"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -186,6 +186,11 @@ Mar 4, 2021 & \parbox[t]{0.85\textwidth}{%
 Mar 3, 2021 & \parbox[t]{0.85\textwidth}{%
 \textbf{Multimodal pooled Perturb-CITE-seq screens in patient models define mechanisms of cancer immune evasion.}\hfill{\footnotesize \newline CJ Frangieh, JC Melms, PI Thakore, KR Geiger-Schuller, P Ho, AM Luoma, B Cleary, L Jerby-Arnon, S Malu, \underline{MS Cuoco}, M Zhao, CR Ager, M Rogava, L Hovey, A Rotem, C Bernatchez, KW Wucherpfennig, BE Johnson, O Rozenblatt-Rosen, D Schadendorf, A Regev, B Izar}\newline
   {\textit{Nature genetics}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41588-021-00779-1}{doi.org/10.1038/s41588-021-00779-1}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Mar 24, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Blockade of IL-22 signaling reverses erythroid dysfunction in stress-induced anemias.}\hfill{\footnotesize \newline M Raundhal, S Ghosh, SA Myers, \underline{MS Cuoco}, M Singer, SA Carr, SS Waikar, JV Bonventre, J Ritz, RM Stone, DP Steensma, A Regev, LH Glimcher}\newline
+  {\textit{Nature immunology}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41590-021-00895-4}{doi.org/10.1038/s41590-021-00895-4}}}\par%
   \empty%
 \vspace{\parsep}}\\
 Mar 13, 2021 & \parbox[t]{0.85\textwidth}{%
