@@ -8,7 +8,7 @@ twitter: cuoco_michael
 github: mikecuoco
 orcid: "0000-0003-2163-5120"
 # aboutme: "Molecular biologist and bioinformatician focused on gene regulation in cancer evolution and drug resistance. Interested in decoding and modeling the human cell."
-date: "Updated March 06 2021"
+date: "Updated March 28 2021"
 headcolor: "00008B"
 output: 
   vitae::hyndman: 
@@ -19,11 +19,6 @@ output:
 
 # Education 
 \begin{longtable}{@{\extracolsep{\fill}}ll}
-Sep 2020--Mar 2021 & \parbox[t]{0.85\textwidth}{%
-\textbf{PhD, Bioinformatics and Systems Biology}\hfill{\footnotesize San Diego, California}\newline
-  University of California, San Diego\par%
-  \empty%
-\vspace{\parsep}}\\
 May 2016--May 2018 & \parbox[t]{0.85\textwidth}{%
 \textbf{Postbaccalaureate coursework}\hfill{\footnotesize Cambridge, Massachusetts}\newline
   Harvard Extension School\par%
@@ -193,6 +188,16 @@ Mar 3, 2021 & \parbox[t]{0.85\textwidth}{%
   {\textit{Nature genetics}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41588-021-00779-1}{doi.org/10.1038/s41588-021-00779-1}}}\par%
   \empty%
 \vspace{\parsep}}\\
+Mar 24, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Blockade of IL-22 signaling reverses erythroid dysfunction in stress-induced anemias.}\hfill{\footnotesize \newline M Raundhal, S Ghosh, SA Myers, \underline{MS Cuoco}, M Singer, SA Carr, SS Waikar, JV Bonventre, J Ritz, RM Stone, DP Steensma, A Regev, LH Glimcher}\newline
+  {\textit{Nature immunology}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41590-021-00895-4}{doi.org/10.1038/s41590-021-00895-4}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Mar 13, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Tumor and immune reprogramming during immunotherapy in advanced renal cell carcinoma.}\hfill{\footnotesize \newline K Bi, MX He, Z Bakouny, A Kanodia, S Napolitano, J Wu, G Grimaldi, DA Braun, \underline{MS Cuoco}, A Mayorga, L DelloStritto, G Bouchard, J Steinharter, AK Tewari, NI Vokes, E Shannon, M Sun, J Park, SL Chang, BA McGregor, R Haq, T Denize, S Signoretti, JL Guerriero, S Vigneau, O Rozenblatt-Rosen, A Rotem, A Regev, TK Choueiri, EM Van Allen}\newline
+  {\textit{Cancer cell}}  {\color{blue} \underline{\href{www.doi.org/10.1016/j.ccell.2021.02.015}{doi.org/10.1016/j.ccell.2021.02.015}}}\par%
+  \empty%
+\vspace{\parsep}}\\
 Jan 27, 2021 & \parbox[t]{0.85\textwidth}{%
 \textbf{Opposing immune and genetic mechanisms shape oncogenic programs in synovial sarcoma.}\hfill{\footnotesize \newline L Jerby-Arnon, C Neftel, ME Shore, HR Weisman, ND Mathewson, MJ McBride, B Haas, B Izar, A Volorio, G Boulay, L Cironi, AR Richman, LC Broye, JM Gurski, CC Luo, R Mylvaganam, L Nguyen, S Mei, JC Melms, C Georgescu, O Cohen, JE Buendia-Buendia, A Segerstolpe, M Sud, \underline{MS Cuoco}, D Labes, S Gritsch, DR Zollinger, N Ortogero, JM Beechem, G Petur Nielsen, I Chebib, T Nguyen-Ngoc, M Montemurro, GM Cote, E Choy, I Letovanec, S Cherix, N Wagle, PK Sorger, AB Haynes, JT Mullen, I Stamenkovic, MN Rivera, C Kadoch, KW Wucherpfennig, O Rozenblatt-Rosen, ML Suvà, N Riggi, A Regev}\newline
   {\textit{Nature medicine}}  {\color{blue} \underline{\href{www.doi.org/10.1038/s41591-020-01212-6}{doi.org/10.1038/s41591-020-01212-6}}}\par%
@@ -250,6 +255,11 @@ Apr 29, 2015 & \parbox[t]{0.85\textwidth}{%
 \begin{longtable}{@{\extracolsep{\fill}}ll}
 Feb 2, 2021 & \parbox[t]{0.85\textwidth}{%
 \textbf{Multicellular immune hubs and their organization in MMRd and MMRp colorectal cancer}\hfill{\footnotesize \newline K Pelka, M Hofree, J Chen, S Sarkizova, JD Pirl, V Jorgji, A Bejnood, D Dionne, WH Ge, KH Xu, SX Chao, DR Zollinger, DJ Lieb, JW Reeves, CA Fuhrman, ML Hoang, T Delorey, LT Nguyen, J Waldman, M Klapholz, I Wakiro, O Cohen, CS Smillie, \underline{MS Cuoco}, J Wu, M-j Su, J Yeung, B Vijaykumar, AM Magnuson, N Asinovski, T Moll, MN Goder-Reiser, AS Applebaum, LK Brais, LK DelloStritto, SL Denning, ST Phillips, EK Hill, JK Meehan, DT Frederick, T Sharova, A Kanodia, EZ Todres, NA J}\newline
+  {\textit{bioRxiv}}  {\color{blue} \underline{\href{www.doi.org/10.1101/2021.01.30.426796}{doi.org/10.1101/2021.01.30.426796}}}\par%
+  \empty%
+\vspace{\parsep}}\\
+Feb 1, 2021 & \parbox[t]{0.85\textwidth}{%
+\textbf{Multicellular immune hubs and their organization in MMRd and MMRp colorectal cancer}\hfill{\footnotesize \newline K Pelka, M Hofree, J Chen, S Sarkizova, JD Pirl, V Jorgji, A Bejnood, D Dionne, WH Ge, KH Xu, SX Chao, DR Zollinger, DJ Lieb, JW Reeves, CA Fuhrman, ML Hoang, T Delorey, LT Nguyen, JA Waldmann, M Klapholz, I Wakiro, O Cohen, CS Smillie, \underline{MS Cuoco}, J Wu, M-j Su, J Yeung, B Vijaykumar, AM Magnuson, N Asinovski, T Moll, MN Goder-Reiser, AS Applebaum, LK Brais, LK DelloStritto, SL Denning, ST Phillips, EK Hill, JK Meehan, DT Frederick, T Sharova, A Kanodia, EZ Todres}\newline
   {\textit{bioRxiv}}  {\color{blue} \underline{\href{www.doi.org/10.1101/2021.01.30.426796}{doi.org/10.1101/2021.01.30.426796}}}\par%
   \empty%
 \vspace{\parsep}}\\
