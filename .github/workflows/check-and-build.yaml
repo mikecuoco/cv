@@ -36,8 +36,6 @@ jobs:
           
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v1
-        with:
-          pandoc-version: '2.9.2' 
       - run: echo "# Test" | pandoc -t html
       
       - name: Setup TinyTex 
@@ -73,7 +71,7 @@ jobs:
           remotes::install_cran("rcmdcheck")
           remotes::install_deps(dependencies = TRUE)
           renv::restore()
-          tinytex::reinstall_tinytex()
+          tinytex::tlmgr_update()
         shell: Rscript {0}
         
       - name: Check
