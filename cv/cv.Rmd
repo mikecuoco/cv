@@ -141,6 +141,8 @@ pubs %>%
 ```{r preprints}
 pubs %>% 
   dplyr::filter(preprint) %>% 
+  group_by(doi) %>%
+  filter(date == max(date)) %>%
   detailed_entries(
     what = title,
     when = pubdate,
