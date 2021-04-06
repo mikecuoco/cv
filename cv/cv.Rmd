@@ -37,13 +37,13 @@ gs4_deauth()
 # Education 
 ```{r education}
 read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "edu") %>%
-  detailed_entries(when = glue("{month(start_date,T)} {year(start_date)}--{month(end_date,T)} {year(end_date)}"),   
+   detailed_entries(when = glue("{start_date}--{end_date}"),
                    what = degree,
                    with = loc,
                    where = uni,
                    why = details)
-
 ```
+
 # Honors and Awards
 
 ```{r honors}
@@ -69,32 +69,7 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>%
     why = details)
 ```
 
-\pagebreak
-
-# Professional Training
-
-```{r training}
-read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>% 
-  arrange(desc(when)) %>% 
-  detailed_entries(
-    what = what,
-    with = with, 
-    when = when, 
-    where = where, 
-    why = why)
-```
-
-# Teaching
-
-```{r teaching}
-read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
-  detailed_entries(
-    what = what, 
-    when = when, 
-    with = with, 
-    where = where, 
-    why = why)
-```
+\pagebreak 
 
 # Authored Publications
 
@@ -153,6 +128,31 @@ pubs %>%
 ```
 
 *Publications and preprints are updated programmatically.*
+
+# Professional Training
+
+```{r training}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "train") %>% 
+  arrange(desc(when)) %>% 
+  detailed_entries(
+    what = what,
+    with = with, 
+    when = when, 
+    where = where, 
+    why = why)
+```
+
+# Teaching
+
+```{r teaching}
+read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "teach") %>% 
+  detailed_entries(
+    what = what, 
+    when = when, 
+    with = with, 
+    where = where, 
+    why = why)
+```
 
 # Presentations
 
