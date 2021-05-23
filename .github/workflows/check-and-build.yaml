@@ -40,12 +40,14 @@ jobs:
           pandoc-version: '2.13' # The pandoc version to download (if necessary) and use.
       - run: echo "# Test" | pandoc -t html
       
+      - name: Setup 
+      
       - name: Setup TinyTex 
         uses: r-lib/actions/setup-tinytex@v1
       - run: |
-          tlmgr --version
-          tlmgr install ghostscript
-      
+          tinytex::tlmgr_install("texlive-extra-utils") # for linux!
+      - shell: Rscript {0}
+
       - name: Install essential dependencies
         run: |
           install.packages(c('renv','remotes'))
@@ -64,7 +66,7 @@ jobs:
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
-          eval sudo apt-get install libcurl4-openssl-dev
+          eval sudo apt-get install libcurl4-openssl-dev texlive latexmk
           while read -r cmd
           do
             eval sudo $cmd
