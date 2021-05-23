@@ -50,11 +50,6 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
         
-      - name: Setup texlive-extra-utils
-        run: |
-          tinytex::tlmgr_install("texlive-extra-utils") # for linux!
-        shell: Rscript {0}
-        
       - name: Cache R Packages
         uses: actions/cache@v2
         with:
@@ -67,6 +62,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           eval sudo apt-get install libcurl4-openssl-dev
+          eval sudo apt-get install --no-install-recommends texlive-extra-utils
           while read -r cmd
           do
             eval sudo $cmd
