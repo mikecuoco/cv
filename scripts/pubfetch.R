@@ -61,7 +61,7 @@ get_biorxiv <- function(dois = NULL, term = NULL) {
   if (!is.null(term)) {
     # try to find biorxiv posts, catch errors
     term_fetch = try(
-      biorxiv_content(from = today()-100, to = today(), limit = "*", format = "df") %>%
+      biorxiv_content(from = today()-365, to = today(), limit = "*", format = "df") %>%
       filter(grepl(term, authors), type != "withdrawn"), 
       silent = T)
     if (term_fetch[1] != "Error : no posts found\n"){
