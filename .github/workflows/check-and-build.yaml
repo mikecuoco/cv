@@ -36,6 +36,8 @@ jobs:
           
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.13' # The pandoc version to download (if necessary) and use.
       - run: echo "# Test" | pandoc -t html
       
       - name: Setup TinyTex 
