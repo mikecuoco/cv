@@ -62,7 +62,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           eval sudo apt-get install libcurl4-openssl-dev
-          eval sudo apt-get install --no-install-recommends texlive-extra-utils
+          eval sudo apt-get install texlive-extra-utils
           while read -r cmd
           do
             eval sudo $cmd
