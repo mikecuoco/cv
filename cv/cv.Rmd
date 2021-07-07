@@ -1,6 +1,6 @@
 ---
 name: Michael Sellers Cuoco
-position: "PhD Student, Bioinformatics and Systems Biology"
+position: "PhD Student, Gage Lab, Bioinformatics and Systems Biology"
 address: "University of California, San Diego"
 phone: "(978) 505-0993" 
 email: mcuoco@ucsd.edu
@@ -77,19 +77,19 @@ read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "jobs") %>%
 # Publications - get from Pubmed
 ## BioRxiv
 dois = read_sheet("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv") %>% pull("dois")
+pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate)) 
 biorxiv = get_biorxiv(dois = dois, term = "Cuoco") 
 ### Crossref back to sheet
-if (!all(biorxiv$doi %in% dois)){
-  new_dois = biorxiv$doi[!biorxiv$doi %in% dois] %>% as.data.frame()
-  googlesheets4::sheet_append("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv", data = new_dois)
-}
+# if (!all(biorxiv$doi %in% dois)){
+#   new_dois = biorxiv$doi[!biorxiv$doi %in% dois] %>% as.data.frame()
+#   googlesheets4::sheet_append("1tlqAVKrW1HbeeB7wbUB6jMlN1jQoNYUtDk0WnL7_G_A", sheet = "biorxiv", data = new_dois)
+# }
 ### remove already published 
 # biorxiv = filter(biorxiv, pubd == "NA") %>% select(-pubd) %>% arrange(desc(pubdate)) 
 ### arrange by date
 biorxiv = select(biorxiv, -pubd) %>% arrange(desc(pubdate)) 
 
 ## PubMed
-pubmed = get_pubmed("Michael Cuoco") %>% arrange(desc(pubdate)) 
 pubs = bind_rows(pubmed, biorxiv) %>% 
   mutate(pubdate = glue("{month(pubdate,T)} {day(pubdate)}, {year(pubdate)}"),
          preprint = case_when(journal %in% c("bioRxiv", "BioRxiv") ~ TRUE,TRUE ~ FALSE),
